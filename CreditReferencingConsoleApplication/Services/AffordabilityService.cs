@@ -14,7 +14,7 @@ namespace CreditReferencingConsoleApplication.Services
             decimal totalIncome = transactions
                 .Where(t => t.MoneyIn > 0)
                 .Sum(t => t.MoneyIn);
-            
+
             decimal totalExpenditure = transactions
                 .Where(t => t.MoneyOut > 0)
                 .Sum(t => t.MoneyOut);
@@ -22,8 +22,12 @@ namespace CreditReferencingConsoleApplication.Services
             // Monthly disposable income
             decimal monthlyDisposableIncome = totalIncome - totalExpenditure;
 
-            // Affordability threshold
-            decimal affordabilityThreshold = properties.Max(p => p.RentPerMonth) * 1.25m;
+            // Calculate affordability threshold only if properties list is not empty
+            decimal affordabilityThreshold = 0;
+            if(properties.Any())
+            {
+                affordabilityThreshold = properties.Max(p => p.RentPerMonth) * 1.25m;
+            }
 
             // Filter properties that are affordable based on disposable income
             List<Property> affordableProperties = properties
