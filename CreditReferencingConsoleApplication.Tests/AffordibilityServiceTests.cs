@@ -22,7 +22,7 @@ namespace CreditReferencingConsoleApplication.Tests
         [Test]
         public void CreditReferenceCheck_AffordableProperties_ReturnsCorrectResult()
         {
-            // Given
+            // Arrange
             var transactions = new List<Transaction>
             {
                 new Transaction { Date = new DateTime(2020, 1, 1, 0, 0, 0, DateTimeKind.Unspecified), PaymentType = "Direct Debit", Details = "Gas & Electricity", MoneyOut = 95.06m, Balance = 1200.04m },
