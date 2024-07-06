@@ -8,7 +8,7 @@ namespace CreditReferencingConsoleApplication.Models
 {
     public class Transaction
     {
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string PaymentType { get; set; }
         public string Details { get; set; }
         public decimal MoneyOut { get; set; }
