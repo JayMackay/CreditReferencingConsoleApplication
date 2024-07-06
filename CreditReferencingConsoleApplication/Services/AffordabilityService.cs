@@ -38,3 +38,7 @@ namespace CreditReferencingConsoleApplication.Services
         }
     }
 }
+
+//£2,814.00(Total Income)
+//- £3,622.96(Total Expenditure)
+//= -£808.96
