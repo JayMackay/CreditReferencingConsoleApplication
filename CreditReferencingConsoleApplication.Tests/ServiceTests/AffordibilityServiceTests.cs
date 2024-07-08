@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using Moq;
-using System;
 using System.Collections.Generic;
 using CreditReferencingConsoleApplication.Models;
 using CreditReferencingConsoleApplication.Services;
@@ -11,6 +10,7 @@ namespace CreditReferencingConsoleApplication.Tests.ServiceTests
     [TestFixture]
     public class AffordabilityServiceTests
     {
+        // Example of mocking in case there are multiple dependencies needed
         private Mock<IAffordabilityService> _mockAffordabilityService;
 
         [SetUp]
