@@ -37,7 +37,7 @@ namespace CreditReferencingConsoleApplication.Tests
 
             // Assert
             Assert.NotNull(transactions);
-            Assert.AreEqual(5, transactions.Count); // Adjust based on your mock data
+            Assert.AreEqual(5, transactions.Count);
 
             // Clean up
             File.Delete(filePath);
@@ -61,7 +61,7 @@ namespace CreditReferencingConsoleApplication.Tests
 
             // Assert
             Assert.NotNull(properties);
-            Assert.AreEqual(4, properties.Count); // Adjust based on your mock data
+            Assert.AreEqual(4, properties.Count);
 
             // Clean up
             File.Delete(filePath);
@@ -71,6 +71,7 @@ namespace CreditReferencingConsoleApplication.Tests
         {
             string tempFilePath = Path.GetTempFileName();
             File.WriteAllText(tempFilePath, csvContent);
+            
             return tempFilePath;
         }
     }

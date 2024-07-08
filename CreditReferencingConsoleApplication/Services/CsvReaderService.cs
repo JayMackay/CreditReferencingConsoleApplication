@@ -88,20 +88,21 @@ namespace CreditReferencingConsoleApplication.Services
                 string[] lines = File.ReadAllLines(filePath);
 
                 // Ensure there's at least one line with data
-                if(lines.Length == 0)
+                if(lines.Length <= 1)
                 {
-                    throw new InvalidDataException("CSV file is empty.");
+                    throw new InvalidDataException("CSV file does not contain enough data.");
                 }
 
-                // Process each line in the CSV file
+                // Skip the header line and process each subsequent line in the CSV file
                 properties = lines
+                    .Skip(1) // Skip the header line
                     .Where(line => !string.IsNullOrWhiteSpace(line))
-                    .Select(line => SplitCsvLine(line))              
-                    .Where(fields => fields.Length >= 3)             
+                    .Select(line => SplitCsvLine(line))
+                    .Where(fields => fields.Length >= 3)
                     .Select(fields => new Property
                     {
                         Id = int.TryParse(fields[0].Trim('"'), out int id) ? id : 0,
-                        Address = fields[1].Trim('"'),                               
+                        Address = fields[1].Trim('"'),
                         RentPerMonth = decimal.TryParse(fields[2].Trim('"'), NumberStyles.Currency, CultureInfo.InvariantCulture, out decimal rent) ? rent : 0m // Parse RentPerMonth
                     })
                     .ToList();
